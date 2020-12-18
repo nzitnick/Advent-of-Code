@@ -32,9 +32,12 @@ def checkRules2(value, rule):
 
 def problem2(rules, myTicket, tickets):
     ranges = []
+    departureCount = 0
     for x in rules:
         x = x.split()
         ranges.append([x[-3].split('-'), x[-1].split('-')])
+        if x[0] == 'departure':
+            departureCount += 1
     
     order = []
     for ruleNum, rule in enumerate(ranges):
@@ -60,7 +63,7 @@ def problem2(rules, myTicket, tickets):
     total = 1
     myTicket = myTicket.split(',')
     for x in sortOrder:
-        if int(x[1]) < 6:
+        if int(x[1]) < departureCount:
             total *= int(myTicket[int(x[0][0])])
     print(total)
 
