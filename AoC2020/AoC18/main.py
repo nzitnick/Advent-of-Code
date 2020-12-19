@@ -1,3 +1,4 @@
+from time import time
 
 def meth(equation, i):
     num = ''
@@ -32,7 +33,6 @@ def meth(equation, i):
             return num , i
 
         i += 1
-
     return num, i
 
 
@@ -86,10 +86,12 @@ def problem2(equations):
 
 
 def main():
+    startTime = time()
     with open('input.txt') as f:
         lines = f.read().splitlines()
         equations = [i.replace(' ', '') for i in lines]
-    problem1(equations)
+    #problem1(equations)
     problem2(equations)
+    print('runtime: {}'.format(time() - startTime))
 if __name__ == '__main__':
     main()
