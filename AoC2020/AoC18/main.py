@@ -1,6 +1,6 @@
 from time import time
 
-def meth(equation, i):
+def orderOp(equation, i):
     num = ''
     op = ''
     while i < len(equation):
@@ -21,7 +21,7 @@ def meth(equation, i):
             op = equation[i]
 
         elif equation[i] == '(':
-            temp, i = meth(equation, i + 1)
+            temp, i = orderOp(equation, i + 1)
             if op == '*':    
                 num *= temp
             elif op == '+':
@@ -39,7 +39,7 @@ def meth(equation, i):
 def problem1(equations):
     total = []
     for equation in equations:
-        num = meth(equation, 0)
+        num = orderOp(equation, 0)
         total.append(num[0])
     print(sum(total))
 
@@ -80,7 +80,7 @@ def problem2(equations):
                     equation = equation[:i-1] + '(' + equation[i-1:i+2] + ')' + equation[i+2:]
                 i += 1
             i += 1
-        temp = meth(equation, 0)
+        temp = orderOp(equation, 0)
         total.append(temp[0])
     print(sum(total))
 

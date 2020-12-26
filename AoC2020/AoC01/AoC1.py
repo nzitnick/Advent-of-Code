@@ -1,9 +1,7 @@
 
-import math
-import os
-import input
 
-def findCoins(input):
+
+def findCoins(inputs):
         for  x in inputs:
             for y in inputs:
                 for z in inputs:
@@ -11,10 +9,19 @@ def findCoins(input):
                         print (x * y * z)
                         return
 
+def betterWay(numbers):
+    for x in numbers:
+        for y in numbers:
+            diff = 2020 - x - y
+            if diff in numbers:
+                print(x * y * diff)
+                return
 
+                
 if __name__ == '__main__':
-    
-    inputs = input.input
-    findCoins(inputs)
-
+    with open('input.txt') as f:
+        lines = f.read().splitlines()
+    numbers = [int(i) for i in lines]
+    findCoins(numbers)
+    betterWay(numbers)
     
